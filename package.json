@@ -1,0 +1,40 @@
+{
+  "name": "templaterrr",
+  "version": "1.0.0",
+  "description": "Tiny EJS-like templating library with whitespace normalization",
+  "keywords": [
+    "template",
+    "engine",
+    "html",
+    "ejs"
+  ],
+  "homepage": "https://git.vixen.computer/lua/templaterrr",
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.vixen.computer/lua/templaterrr.git"
+  },
+  "bugs": {
+    "url": "https://git.vixen.computer/lua/templaterrr/issues"
+  },
+  "author": "Lua MacDougall <lua@foxgirl.dev> (https://foxgirl.dev/)",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "files": ["dist", "LICENSE"],
+  "scripts": {
+    "build": "bun run build.ts",
+    "prepublishOnly": "bun run build"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "bun-plugin-dts": "^0.3.0",
+    "typescript": "^5"
+  }
+}
