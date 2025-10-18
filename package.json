@@ -1,6 +1,6 @@
 {
   "name": "templaterrr",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Tiny EJS-like templating library with whitespace normalization",
   "keywords": [
     "template",
@@ -18,23 +18,20 @@
   },
   "author": "Lua MacDougall <lua@foxgirl.dev> (https://foxgirl.dev/)",
   "license": "MIT",
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
-  },
+  "type": "commonjs",
+  "main": "./dist/templaterrr.js",
+  "types": "./dist/templaterrr.d.ts",
   "files": ["dist", "LICENSE"],
   "scripts": {
-    "build": "bun run build.ts",
+    "build": "rollup -c",
     "prepublishOnly": "bun run build"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^12.1.4",
     "@types/bun": "latest",
-    "bun-plugin-dts": "^0.3.0",
+    "rollup": "^4.52.5",
+    "rollup-plugin-dts": "^6.2.3",
+    "tslib": "^2.8.1",
     "typescript": "^5"
   }
 }

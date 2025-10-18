@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= pageTitle %></title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .item {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 5px 0;
+    }
+  </style>
+  <script>
+    var message = "Hello from JavaScript!";
+    console.log(message);
+  </script>
+</head>
+<body>
+  <h1><%= pageTitle %></h1>
+
+  <!-- user information -->
+  <% if (user) { %>
+    <div class="user-info">
+      <h2>User: <%= user.name %></h2>
+      <p>Email: <%= user.email %></p>
+      <% if (user.admin) { %>
+        <span class="badge">Admin</span>
+      <% } %>
+    </div>
+  <% } %>
+
+  <!-- item list -->
+  <h3>Items (<%= items.length %>)</h3>
+  <% if (items.length > 0) { %>
+    <div class="items">
+      <% items.forEach(function(item, index) { %>
+        <div class="item">
+          <strong>#<%= index + 1 %></strong>: <%= item.name %> - $<%= item.price.toFixed(2) %>
+          <% if (item.onSale) { %>
+            <span style="color: red;">SALE!</span>
+          <% } %>
+        </div>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <p>No items available.</p>
+  <% } %>
+
+  <!-- loop -->
+  <h3>Categories</h3>
+  <ul>
+    <% categories.map(cat => cat.toUpperCase()).forEach(cat => { %>
+      <li><%= cat %></li>
+    <% }); %>
+  </ul>
+
+  <!-- complex nested logic -->
+  <% var total = items.reduce((sum, item) => sum + item.price, 0); %>
+  <% var discount = total > 100 ? 0.1 : 0; %>
+  <% var finalTotal = total * (1 - discount); %>
+
+  <div class="total">
+    <p>Subtotal: $<%= total.toFixed(2) %></p>
+    <% if (discount > 0) { %>
+      <p>Discount: <%= (discount * 100).toFixed(0) %>%</p>
+    <% } %>
+    <p><strong>Total: $<%= finalTotal.toFixed(2) %></strong></p>
+  </div>
+
+  <pre>
+    Preformatted text with    spaces
+    and
+      indentation
+        preserved
+  </pre>
+
+  <textarea>
+Text in textarea
+  with indentation
+    preserved
+  </textarea>
+
+  <footer>
+    <p>&copy; <%= new Date().getFullYear() %> - <%= companyName %></p>
+  </footer>
+</body>
+</html>

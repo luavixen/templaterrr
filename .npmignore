@@ -1,5 +1,5 @@
+src
 test
-index.test.ts
-build.ts
 bun.lock
+rollup.config.js
 tsconfig.json

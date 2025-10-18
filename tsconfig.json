@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
-    "lib": ["esnext"],
-    "target": "es2020",
+    "rootDir": "src",
+    "outDir": "dist",
+
+    "lib": ["es5"],
+    "target": "es5",
     "module": "esnext",
     "moduleDetection": "force",
     "moduleResolution": "node",
+
     "noEmit": true,
-    "outDir": "dist",
 
     "allowJs": true,
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
     "verbatimModuleSyntax": true,
     "esModuleInterop": true,
 
@@ -22,5 +25,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
-  }
+  },
+  "include": ["src/**/*"]
 }
