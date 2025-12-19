@@ -3,9 +3,9 @@ import { collapse, dedent, scan } from './utils';
 // preserved elements and their closing tag regexes
 // whitespace inside these elements will not be collapsed, but will be dedented
 var preservedElements: Record<string, RegExp> = {
-  'textarea': /<\/textarea>/i,
-  'script': /<\/script>/i,
-  'style': /<\/style>/i
+  'textarea': /<\/textarea>/ig,
+  'script': /<\/script>/ig,
+  'style': /<\/style>/ig
 };
 
 /**
@@ -170,7 +170,9 @@ export function generate(
         var closing = preservedElements[tag];
         if (closing) {
           expand(dedent(scanner(closing)), false);
-          text += scanner.match![0];
+          if (scanner.match) {
+            text += scanner.match[0];
+          }
         }
       }
     }

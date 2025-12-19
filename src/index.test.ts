@@ -350,6 +350,39 @@ describe('compileString', () => {
     expect(result).toContain('" spaces in this string "');
   });
 
+  test('unterminated <script>/<pre>/<textarea>s don\'t throw', () => {
+    const template1 = compileString(`
+      <pre></pre>
+      <script>
+        var x = 1;
+    `);
+    expect(template1({})).toBe('\n<pre></pre>\n<script>\nvar x = 1;\n');
+
+    const template2 = compileString(`
+      <script></script>
+      <pre>
+        line1
+          line2
+    `);
+    expect(template2({})).toBe('\n<script></script>\n<pre>\n        line1\n          line2\n    ');
+
+    const template3 = compileString(`<textarea>  `);
+    expect(template3({})).toBe('<textarea>  ');
+  });
+
+  test('multiple mixed <script>s don\'t infinite loop', () => {
+    // this code would cause an infinite loop in v2.0.0
+    compileString(`
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.0/css/all.css">
+      <script type="text/javascript" src="./scripts/sourcebans.js"></script>
+      <link href="themes/default/css/main.css" rel="stylesheet" type="text/css" />
+      <script type="text/javascript" src="./scripts/mootools.js"></script>
+      <script type="text/javascript" src="./scripts/contextMenoo.js"></script>
+     	<script type="text/javascript">
+    `);
+    expect(true).toBe(true); // yay! no infinite loop!
+  });
+
   test('whitespace is dedented but not collapsed inside comments', () => {
     const template = compileString(`
       <!-- comment with    spaces

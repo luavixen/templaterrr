@@ -92,6 +92,7 @@ export interface Scanner {
    * @remarks
    * - Advances the scanner's index past the needle
    * - Updates scanner.slice with the returned text
+   * - For RegExp needles, you should almost always use the 'g' flag to ensure correct behavior
    * - For RegExp needles, updates scanner.match with the match result
    * - If the needle is not found, returns all remaining text and moves to the end
    * - If an empty string is passed, returns all remaining text and moves to the end
@@ -106,7 +107,7 @@ export interface Scanner {
    * @example
    * // Regex pattern
    * var scanner = scan('The answer is 42');
-   * var text = scanner(/\d+/);      // 'The answer is '
+   * var text = scanner(/\d+/g);      // 'The answer is '
    * console.log(scanner.match[0]);    // '42'
    */
   (needle: string | RegExp): string;
