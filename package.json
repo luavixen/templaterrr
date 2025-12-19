@@ -1,6 +1,6 @@
 {
   "name": "templaterrr",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Tiny EJS-like templating library with whitespace normalization",
   "keywords": [
     "template",
@@ -22,16 +22,19 @@
   "main": "./dist/templaterrr.js",
   "types": "./dist/templaterrr.d.ts",
   "files": ["dist", "LICENSE"],
+  "browser": {
+    "fs": false
+  },
   "scripts": {
     "build": "rollup -c",
     "prepublishOnly": "bun run build"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^12.1.4",
+    "@rollup/plugin-typescript": "^12.3.0",
     "@types/bun": "latest",
-    "rollup": "^4.52.5",
-    "rollup-plugin-dts": "^6.2.3",
+    "rollup": "^4.53.5",
+    "rollup-plugin-dts": "^6.3.0",
     "tslib": "^2.8.1",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   }
 }
