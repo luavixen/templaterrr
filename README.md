@@ -129,7 +129,7 @@ Renders a template file directly to a string in a single operation.
 
 **Parameters:**
 - `path: string` - Path to the template file
-- `context: any` - Data object to use when rendering
+- `context: any` - Context object to use when rendering
 - `options: Options` - Optional compilation options
 
 **Returns:** `string` - The rendered HTML
@@ -251,7 +251,7 @@ templaterrr uses EJS-like syntax but is *not* a drop-in replacement for EJS. It 
 
 **Supported:**
 - Basic template tags: `<% %>`, `<%= %>`, `<%- %>`
-- Including templates via `include()` function
+- Including templates via `include` function
 - JavaScript expressions and control flow
 - Context object access
 
